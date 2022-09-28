@@ -1,0 +1,32 @@
+.danmu-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.danmu-piece {
+  position: absolute;
+  width: max-content;
+  text-shadow: 0 1px 1px black;
+  top: var(--top);
+  transform: translateX(100%); // 100% -> 0
+  right: 0%; // 0 -> 100%
+}
+
+.run {
+  animation: run var(--sec) linear forwards;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes run {
+  0% {
+    transform: translateX(100%);
+    right: 0%;
+  }
+  100% {
+    transform: translateX(0%);
+    right: 100%;
+  }
+}

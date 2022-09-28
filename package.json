@@ -1,0 +1,53 @@
+{
+  "name": "@timel/danmuku",
+  "version": "1.0.0",
+  "description": "A react component to show danmuku on everywhere.",
+  "main": "./lib/cjs/index.js",
+  "types": "./lib/cjs/types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timelic/danmuku.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "timel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timelic/danmuku/issues"
+  },
+  "homepage": "https://github.com/timelic/danmuku#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "classnames": "^2.3.2",
+    "sass": "^1.55.0",
+    "typescript-plugin-css-modules": "^3.4.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "clean": "rd /s /q \"./lib\" && mkdir ./lib",
+    "build": "npm run build:esm && ren lib/esm/index.js index.mjs && npm run build:cjs",
+    "build:esm": "tsc -p ./configs/tsconfig.esm.json",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "prepack": "npm run build"
+  }
+}
